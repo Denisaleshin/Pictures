@@ -13,14 +13,7 @@ enum Result<T> {
     case failure(Error?)
 }
 
-protocol CollectionViewModelProtocol { // here just to scip compiller warning, but will be needed in future
-    
-}
 
-final class CollectionViewModel: CollectionViewModelProtocol { // here just to scip compiller warning, but will be needed in future
-    
-    
-}
 
 protocol InitialViewModelProtocol {
     var urls:[String]? { get }

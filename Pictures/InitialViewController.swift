@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InitialViewController: UIViewController {
+final class InitialViewController: UIViewController {
     
     @IBOutlet weak var getPicturesButton: UIButton! // to customize this button in future
     var viewModel: InitialViewModelProtocol = InitialViewModel()
@@ -21,7 +21,9 @@ class InitialViewController: UIViewController {
         self.viewModel.getUrlList { [weak self] result in
             switch result {
             case .success(_):
-                let collectionViewModel = self?.viewModel.getCollectionViewModel()
+                let collectionViewModel = self?.viewModel.getCollectionViewModel() ?? CollectionViewModel()
+                let colectionViewcontroller = CollectionViewController(viewModel: collectionViewModel)
+                navigationController?.pushViewController(colectionViewcontroller, animated: true)
             case let .failure(error):
                 print(error)
             }
