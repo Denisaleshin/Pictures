@@ -48,6 +48,11 @@ final class InitialViewModel: InitialViewModelProtocol {
 struct CellItem: CellItemProtocol {
     let content: Product
     let reuseIndetifier = "Cell"
+    
+    func cancelDownloadingFor(_ cell: UICollectionReusableView, in collectionView: UICollectionView, at indexPath: IndexPath) {
+        // I
+    }
+    
     func setup(_ cell: UICollectionReusableView, in collectionView: UICollectionView, at indexPath: IndexPath) {
         
         guard let cell = cell as? Contentable else {
@@ -55,8 +60,18 @@ struct CellItem: CellItemProtocol {
         }
         
         cell.setupContetn(title: content.name)
-        cell.setupContetnt(imageURL: content.image)
         cell.setupContetnt(price: content.price)
+        
+        getImagefromURL { image in
+            guard let cell = collectionView.cellForItem(at: indexPath) as? Contentable else {
+                return
+            }
+            cell.setupContetnt(image: image)
+        }
+    }
+    
+    private func getImagefromURL(completion:((UIImage) -> ())) {
+        
     }
 }
 
