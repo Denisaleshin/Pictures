@@ -10,18 +10,26 @@ import UIKit
 
 final class InitialViewController: UIViewController {
     
-    @IBOutlet weak var getPicturesButton: UIButton! // to customize this button in future
+    @IBOutlet weak var spinnerView: UIActivityIndicatorView!
+    @IBOutlet weak var getPicturesButton: UIButton!
     var viewModel: InitialViewModelProtocol = InitialViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinnerView.isHidden = true
     }
     
     @IBAction func getPicturesButtonPressed(_ sender: Any) {
+        // connection check should be here something like: guard isConected else { showConnectionErrorTouser() ; return }
+        getPicturesButton.isHidden = true
+        spinnerView.isHidden = false
+        spinnerView.startAnimating()
         self.viewModel.getUrlList { [weak self] result in
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
+                    self?.getPicturesButton.isHidden = false
+                    self?.spinnerView.isHidden = true
                     guard let collectionViewModel = self?.viewModel.getCollectionViewModel() else { return }
                     let colectionViewcontroller = CollectionViewController(viewModel: collectionViewModel)
                     self?.navigationController?.pushViewController(colectionViewcontroller, animated: true)
@@ -30,6 +38,7 @@ final class InitialViewController: UIViewController {
                 print(error)
             }
         }
+        spinnerView.stopAnimating()
     }
     
     
