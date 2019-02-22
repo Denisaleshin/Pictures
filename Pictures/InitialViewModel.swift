@@ -16,20 +16,25 @@ enum Result<T> {
 
 protocol InitialViewModelProtocol {
     var products:[Product]? { get }
-    func getUrlList(completion:(Result<[Product]>) -> ())
+    func getUrlList(completion:@escaping (Result<[Product]>) -> ())
     func getCollectionViewModel() -> CollectionViewModelProtocol
 }
 
 final class InitialViewModel: InitialViewModelProtocol {
+    
+    private let initialURL = "https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/list"
     var products:[Product]?
     
-    func getUrlList(completion:(Result<[Product]>) -> ()) {
-        let a = Product(name: "name", price: 5, image: "image")
-        let b = Product(name: "name", price: 5, image: "image")
-        let c = Product(name: "name", price: 5, image: "image")
-        let mokedResult = [a,b,c]
-        products = mokedResult
-        completion(.success(mokedResult))
+    func getUrlList(completion:@escaping (Result<[Product]>) -> ()) {
+        NetworkManager.shared.fetchFrom(initialURL) { result  in
+            switch result {
+            case let .success(cellInfo):
+                self.products = cellInfo
+                completion(.success(cellInfo))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
     
     func getCollectionViewModel() -> CollectionViewModelProtocol {
@@ -45,7 +50,7 @@ struct CellItem: CellItemProtocol {
     let reuseIndetifier = "Cell"
     
     func cancelDownloadingFor(_ cell: UICollectionReusableView, in collectionView: UICollectionView, at indexPath: IndexPath) {
-        // I
+        // Nedd to implement fo canceling download when the cell goes out of the screen 
     }
     
     func setup(_ cell: UICollectionReusableView, in collectionView: UICollectionView, at indexPath: IndexPath) {
@@ -65,6 +70,11 @@ struct CellItem: CellItemProtocol {
     private func getImagefromURL(completion:((UIImage) -> ())) {
         
     }
+}
+
+struct ProductInfoInfo: Codable {
+    var products: [Product]
+    
 }
 
 struct Product: Codable {

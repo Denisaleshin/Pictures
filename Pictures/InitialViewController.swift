@@ -21,9 +21,11 @@ final class InitialViewController: UIViewController {
         self.viewModel.getUrlList { [weak self] result in
             switch result {
             case .success(_):
-                guard let collectionViewModel = self?.viewModel.getCollectionViewModel() else { return }
-                let colectionViewcontroller = CollectionViewController(viewModel: collectionViewModel)
-                navigationController?.pushViewController(colectionViewcontroller, animated: true)
+                DispatchQueue.main.async {
+                    guard let collectionViewModel = self?.viewModel.getCollectionViewModel() else { return }
+                    let colectionViewcontroller = CollectionViewController(viewModel: collectionViewModel)
+                    self?.navigationController?.pushViewController(colectionViewcontroller, animated: true)
+                }
             case let .failure(error):
                 print(error)
             }

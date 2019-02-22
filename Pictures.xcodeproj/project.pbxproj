@@ -16,6 +16,7 @@
 		BBA96697221ED41100B6E873 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA96696221ED41100B6E873 /* CollectionViewController.swift */; };
 		BBA96699221ED45B00B6E873 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA96698221ED45B00B6E873 /* CollectionViewModel.swift */; };
 		BBA9669D22207C9200B6E873 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9669C22207C9200B6E873 /* CollectionViewCell.swift */; };
+		BBA9669F2220808300B6E873 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9669E2220808300B6E873 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BBA96696221ED41100B6E873 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		BBA96698221ED45B00B6E873 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		BBA9669C22207C9200B6E873 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		BBA9669E2220808300B6E873 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				BB8202AA221E7FBE00B3E9A0 /* Main.storyboard */,
 				BBA96698221ED45B00B6E873 /* CollectionViewModel.swift */,
 				BB8202B8221E83B800B3E9A0 /* InitialViewModel.swift */,
+				BBA9669E2220808300B6E873 /* NetworkManager.swift */,
 				BBA9669C22207C9200B6E873 /* CollectionViewCell.swift */,
 				BB8202AD221E7FBF00B3E9A0 /* Assets.xcassets */,
 				BB8202AF221E7FBF00B3E9A0 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 				BBA96697221ED41100B6E873 /* CollectionViewController.swift in Sources */,
 				BB8202A9221E7FBE00B3E9A0 /* InitialViewController.swift in Sources */,
 				BBA9669D22207C9200B6E873 /* CollectionViewCell.swift in Sources */,
+				BBA9669F2220808300B6E873 /* NetworkManager.swift in Sources */,
 				BB8202A7221E7FBE00B3E9A0 /* AppDelegate.swift in Sources */,
 				BB8202B9221E83B800B3E9A0 /* InitialViewModel.swift in Sources */,
 				BBA96699221ED45B00B6E873 /* CollectionViewModel.swift in Sources */,
