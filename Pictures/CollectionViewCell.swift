@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class CollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
@@ -29,7 +28,6 @@ class CollectionViewCell: UICollectionViewCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -15)
-            
             ])
     }
     

@@ -26,8 +26,6 @@ protocol CellItemProtocol {
     func cancelDownloadingFor(_ cell: UICollectionReusableView, in collectionView: UICollectionView, at indexPath: IndexPath)
 }
 
-
-
 struct Label {
     static func makeStandartLabel() -> UILabel {
         let label = UILabel(frame: .zero)
@@ -38,12 +36,9 @@ struct Label {
     }
 }
 
-
-
 protocol CollectionViewModelProtocol {
     var sections: [SectionViewModelProtocol] { get set }
 }
-
 
 final class CollectionViewModel: CollectionViewModelProtocol {
     var sections: [SectionViewModelProtocol]

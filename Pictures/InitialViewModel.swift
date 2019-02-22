@@ -14,8 +14,6 @@ enum Result<T> {
     case failure(Error?)
 }
 
-
-
 protocol InitialViewModelProtocol {
     var products:[Product]? { get }
     func getUrlList(completion:(Result<[Product]>) -> ())
@@ -40,9 +38,6 @@ final class InitialViewModel: InitialViewModelProtocol {
         let section = MokedSection(items: items)
         return CollectionViewModel(sections: [section])
     }
-    
-    
-    
 }
 
 struct CellItem: CellItemProtocol {
@@ -54,14 +49,11 @@ struct CellItem: CellItemProtocol {
     }
     
     func setup(_ cell: UICollectionReusableView, in collectionView: UICollectionView, at indexPath: IndexPath) {
-        
         guard let cell = cell as? Contentable else {
             return
         }
-        
         cell.setupContetn(title: content.name)
         cell.setupContetnt(price: content.price)
-        
         getImagefromURL { image in
             guard let cell = collectionView.cellForItem(at: indexPath) as? Contentable else {
                 return
@@ -75,14 +67,11 @@ struct CellItem: CellItemProtocol {
     }
 }
 
-
 struct Product: Codable {
     var name: String
     var price: Int
     var image: String
 }
-
-
 
 struct MokedSection: SectionViewModelProtocol {
     var items: [CellItemProtocol]

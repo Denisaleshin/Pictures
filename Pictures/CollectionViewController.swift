@@ -14,7 +14,6 @@ final class CollectionViewController: UIViewController  {
     
     var viewModel: CollectionViewModelProtocol
     
-    
     private lazy var collectionView: UICollectionView = {
         let layout =  UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
@@ -50,7 +49,6 @@ final class CollectionViewController: UIViewController  {
             ])
     }
     
-    
 }
 
 extension CollectionViewController: UICollectionViewDataSource {
@@ -81,7 +79,5 @@ extension CollectionViewController: UICollectionViewDataSource {
         cellModel.setup(reusableView, in: collectionView, at: indexPath)
         return reusableView
     }
-    
-    
     
 }
