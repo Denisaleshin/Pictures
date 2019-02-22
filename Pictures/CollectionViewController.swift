@@ -10,21 +10,20 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UIViewController  {
+final class CollectionViewController: UIViewController  {
     
     var viewModel: CollectionViewModelProtocol
     
+    
     private lazy var collectionView: UICollectionView = {
         let layout =  UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 7, left: 15, bottom: 4, right: 15)
-        layout.minimumLineSpacing = 10;
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
         let itemsOnScreen: CGFloat = 2
         var width = UIScreen.main.bounds.size.width
         width -= (14 * (itemsOnScreen + 1)) // Space between cells.
         var cellWidth = width / itemsOnScreen
         layout.itemSize = CGSize(width: cellWidth, height: cellWidth )
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
-        collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
     }()
@@ -49,36 +48,40 @@ class CollectionViewController: UIViewController  {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             ])
-        // Do any additional setup after loading the view.
     }
-
-   
+    
     
 }
 
-extension CollectionViewController: UICollectionViewDelegate {
-   
-
-}
 extension CollectionViewController: UICollectionViewDataSource {
-     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 20
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return viewModel.sections.count
     }
     
-    
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 2
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.sections[section].items.count
     }
     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-       cell.backgroundColor = UIColor.green
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellItemViewModel = viewModel.sections[indexPath.section].items[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellItemViewModel.reuseIndetifier, for: indexPath)
+        cellItemViewModel.setup(cell, in: collectionView, at: indexPath)
+        cell.backgroundColor = UIColor.green // just to test
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let section = self.viewModel.sections[indexPath.section]
+        guard let cellModel = section.model(for: kind) else {
+            return UICollectionReusableView()
+        }
+        
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: cellModel.reuseIndetifier, for: indexPath)
+        cellModel.setup(reusableView, in: collectionView, at: indexPath)
+        return reusableView
+    }
+    
+    
     
 }
