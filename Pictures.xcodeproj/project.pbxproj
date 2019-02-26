@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB4B8E0322257F810010298E /* AsyncDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4B8E0222257F810010298E /* AsyncDownload.swift */; };
 		BB8202A7221E7FBE00B3E9A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8202A6221E7FBE00B3E9A0 /* AppDelegate.swift */; };
 		BB8202A9221E7FBE00B3E9A0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8202A8221E7FBE00B3E9A0 /* InitialViewController.swift */; };
 		BB8202AC221E7FBE00B3E9A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB8202AA221E7FBE00B3E9A0 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB4B8E0222257F810010298E /* AsyncDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDownload.swift; sourceTree = "<group>"; };
 		BB8202A3221E7FBE00B3E9A0 /* Pictures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pictures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8202A6221E7FBE00B3E9A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB8202A8221E7FBE00B3E9A0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				BB8202A6221E7FBE00B3E9A0 /* AppDelegate.swift */,
 				BB8202A8221E7FBE00B3E9A0 /* InitialViewController.swift */,
+				BB4B8E0222257F810010298E /* AsyncDownload.swift */,
 				BBA96696221ED41100B6E873 /* CollectionViewController.swift */,
 				BB8202AA221E7FBE00B3E9A0 /* Main.storyboard */,
 				BBA96698221ED45B00B6E873 /* CollectionViewModel.swift */,
@@ -154,6 +157,7 @@
 				BB8202A9221E7FBE00B3E9A0 /* InitialViewController.swift in Sources */,
 				BBA9669D22207C9200B6E873 /* CollectionViewCell.swift in Sources */,
 				BBA9669F2220808300B6E873 /* NetworkManager.swift in Sources */,
+				BB4B8E0322257F810010298E /* AsyncDownload.swift in Sources */,
 				BB8202A7221E7FBE00B3E9A0 /* AppDelegate.swift in Sources */,
 				BB8202B9221E83B800B3E9A0 /* InitialViewModel.swift in Sources */,
 				BBA96699221ED45B00B6E873 /* CollectionViewModel.swift in Sources */,
