@@ -16,6 +16,10 @@ final class NetworkManager {
     
     static let shared = NetworkManager()
     
+    private init() {
+        
+    }
+    
     func fetchFrom(_ url: String, completion:@escaping (Result<[Product]>) -> ()) {
         
         guard let url = URL(string: url) else { return }

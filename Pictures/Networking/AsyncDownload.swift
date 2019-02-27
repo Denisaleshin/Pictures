@@ -14,8 +14,6 @@ class AsyncDownload: Operation {
     let urlString: String
     var image: UIImage?
     
-    
-    
      init(url: String) {
         self.urlString = url
         super.init()
@@ -29,7 +27,6 @@ class AsyncDownload: Operation {
         image = UIImage(data: validData)
     }
     
-    
 }
 
 extension URL: ExpressibleByStringLiteral {
@@ -39,6 +36,4 @@ extension URL: ExpressibleByStringLiteral {
         }
         self = url
     }
-    
-    
 }
